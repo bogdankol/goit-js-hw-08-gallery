@@ -75,8 +75,8 @@ function onArrowPressModalHandler(event) {
     
     if (event.key === `ArrowRight`) {
         newIndex = currentIndex + 1;
-        if (newIndex == -1) {
-            newIndex = arrayOfDataSources.length + 1;
+        if (newIndex == arrayOfDataSources.length) {
+          newIndex = 0;
         }
     }
     if (event.key === `ArrowLeft`) {
