@@ -35,6 +35,7 @@ ulGalleryRef.querySelectorAll(`img`)
 ulGalleryRef.addEventListener(`click`, onMouseClickListElementHandler)
 modalButton.addEventListener(`click`, onModalCloseButtonClickHandler)
 modalOverlay.addEventListener(`click`, onModalCloseButtonClickHandler);
+
 document.addEventListener(`keydown`, onEscPress)
 
 function onMouseClickListElementHandler(event) {
@@ -43,6 +44,7 @@ function onMouseClickListElementHandler(event) {
     modalImage.alt = event.target.alt;
     modalImage.src = event.target.dataset.source;
 }
+
 function onModalCloseButtonClickHandler() {
     modal.classList.remove(`is-open`);
     // this deletes big image's cache when opening another big image
@@ -50,6 +52,7 @@ function onModalCloseButtonClickHandler() {
     modalImage.src = ``;
     modalImage.alt = ``;
 }
+
 function onEscPress(event) {
     if (event.key === `Escape`) {
         modal.classList.remove(`is-open`);
@@ -69,22 +72,27 @@ document.addEventListener(`keydown`, onArrowPressModalHandler);
 
 function onArrowPressModalHandler(event) {
     let newIndex;
+
     const currentIndex = arrayOfDataSources.indexOf(
         modalImage.getAttribute(`src`)
     );
     
     if (event.key === `ArrowRight`) {
         newIndex = currentIndex + 1;
+        
         if (newIndex == arrayOfDataSources.length) {
           newIndex = 0;
         }
     }
+
     if (event.key === `ArrowLeft`) {
         newIndex = currentIndex - 1;
+
         if (newIndex == -1) {
           newIndex = arrayOfDataSources.length - 1;
         }
     }
+
     modalImage.src = arrayOfDataSources[newIndex];
 }
 
